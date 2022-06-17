@@ -23,10 +23,9 @@ data "aws_ami" "ubuntu_desktop_ami" {
 }
 
 # Configure security group
-resource "aws_security_group" "ubuntu_ami" {
+resource "aws_security_group" "ubuntu_ami_sg" {
   name        = "ubuntu_desktop_live"
   description = "Allow HTTP, RDP and SSH inbound traffic"
-
 
   ingress {
     description      = "HTTP"
@@ -68,3 +67,14 @@ resource "aws_security_group" "ubuntu_ami" {
   }
 }
 
+resource "aws_instance" "ubuntu_ec2" {
+  ami           = data.aws_ami.ubuntu_desktop_ami.id
+  instance_type = "m5.large"
+  security_groups = [aws_security_group.ubuntu_ami_sg.name]
+  key_name = "ubuntu-live"
+#   user_data = "${file("./virtual-ubuntu.sh")}"
+}
+
+output "IP" {
+  value = "${aws_instance.ubuntu_ec2 .public_ip}"
+}
