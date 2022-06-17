@@ -3,8 +3,12 @@ variable "image_id" {
   description = "The AWS ami id for the base ec2 os"
 }
 
-
 variable "instance_type" {
   type        = string
   description = "The name of the ec2 instance size"
+}
+
+variable "region" {
+  type        = string
+  description = "Region to deploy the server in"
 }
