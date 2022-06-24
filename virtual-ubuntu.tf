@@ -27,7 +27,7 @@ resource "aws_instance" "ubuntu_ec2" {
   instance_type = var.instance_type
   security_groups = [aws_security_group.ubuntu_ami_sg.name]
   key_name = "ubuntu-live"
-#   user_data = "${file("./virtual-ubuntu.sh")}"
+  user_data = "${file("./user-data.sh")}"
 }
 
 output "IP" {
