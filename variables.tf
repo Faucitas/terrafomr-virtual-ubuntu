@@ -12,3 +12,8 @@ variable "region" {
   type        = string
   description = "Region to deploy the server in"
 }
+
+variable "key_name" {
+  type        = string
+  description = "Key file to use for ssh"
+}
