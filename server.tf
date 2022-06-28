@@ -49,7 +49,7 @@ resource "aws_instance" "ubuntu_ec2" {
   instance_type = var.instance_type
   security_groups = [aws_security_group.ubuntu_ami_sg.name]
   key_name = var.key_name
-  # user_data = "${file("./user-data.sh")}"1
+  user_data = "${file("./user-data.sh")}"
 }
 
 resource "aws_eip" "server_ip" {

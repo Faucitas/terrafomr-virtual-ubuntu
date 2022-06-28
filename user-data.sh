@@ -1,10 +1,15 @@
 #!/bin/bash
 
-apt update -y
-apt upgrade -y
-apt install python3-pip -y
-apt install python3-venv -y
+apt update
+apt install apt-transport-https ca-certificates curl software-properties-common -y
 
+# Get and install docker repository
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+apt update
 
-pip install django
-pip install djangorestframework
+apt install docker-ce -y
+
+# install Docker Compose
+curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
