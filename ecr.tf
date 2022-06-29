@@ -7,6 +7,6 @@ resource "aws_ecr_repository" "django_docker" {
   }
 }
 
-output "ecr_arn" {
-  value = "${aws_ecr_repository.django_docker.arn}"
+output "ecr_url" {
+  value = "${aws_ecr_repository.django_docker.repository_url}"
 }

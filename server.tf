@@ -60,3 +60,7 @@ resource "aws_eip" "server_ip" {
 output "IP" {
   value = "${aws_eip.server_ip.public_ip}"
 }
+
+output "public_dns" {
+  value = "${aws_instance.ubuntu_ec2.public_dns}"
+}
