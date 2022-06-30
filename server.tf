@@ -49,6 +49,7 @@ resource "aws_instance" "ubuntu_ec2" {
   instance_type = var.instance_type
   security_groups = [aws_security_group.ubuntu_ami_sg.name]
   key_name = var.key_name
+  iam_instance_profile = "${aws_iam_instance_profile.ecr_profile.name}"
   user_data = "${file("./user-data.sh")}"
 }
 

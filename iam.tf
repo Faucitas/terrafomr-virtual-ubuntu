@@ -15,5 +15,9 @@ resource "aws_iam_role" "django_docker" {
       },
     ]
   })
+}
 
+resource "aws_iam_instance_profile" "ecr_profile" {
+  name = "ecr_profile"
+  role = "${aws_iam_role.django_docker.name}"
 }
