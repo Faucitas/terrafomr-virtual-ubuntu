@@ -17,3 +17,8 @@ variable "key_name" {
   type        = string
   description = "Key file to use for ssh"
 }
+
+variable "default_tags" {
+  type = map(string)
+  description = "Default tags for all provisioned infastructure"
+}

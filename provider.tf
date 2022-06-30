@@ -10,6 +10,9 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   region = var.region
+  default_tags {
+    tags = var.default_tags
+  }
 }
 
 data "aws_ami" "ubuntu_desktop_ami" {
