@@ -44,6 +44,16 @@ resource "aws_security_group" "ubuntu_ami_sg" {
   }
 }
 
+data "aws_ami" "ubuntu_desktop_ami" {
+    most_recent = true
+    owners = [ "aws-marketplace" ]
+
+    filter {
+      name = "image-id"
+      values = [var.image_id]
+    }
+}
+
 resource "aws_instance" "ubuntu_ec2" {
   ami           = data.aws_ami.ubuntu_desktop_ami.id
   instance_type = var.instance_type

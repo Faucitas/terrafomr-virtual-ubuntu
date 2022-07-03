@@ -15,12 +15,3 @@ provider "aws" {
   }
 }
 
-data "aws_ami" "ubuntu_desktop_ami" {
-    most_recent = true
-    owners = [ "aws-marketplace" ]
-
-    filter {
-      name = "image-id"
-      values = [var.image_id]
-    }
-}
