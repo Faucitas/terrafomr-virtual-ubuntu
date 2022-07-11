@@ -1,6 +1,6 @@
 
 # Configure security group
-resource "aws_security_group" "ubuntu_ami_sg" {
+resource "aws_security_group" "ec2_sg_group" {
   name        = "ec2_sg_group"
   description = "Allow HTTP, HTTPS and SSH inbound traffic"
 
@@ -57,7 +57,7 @@ data "aws_ami" "ubuntu_desktop_ami" {
 resource "aws_instance" "ubuntu_ec2" {
   ami           = data.aws_ami.ubuntu_desktop_ami.id
   instance_type = var.instance_type
-  security_groups = [aws_security_group.ubuntu_ami_sg.name]
+  security_groups = [aws_security_group.ec2_sg_group.name]
   key_name = var.key_name
   iam_instance_profile = "${aws_iam_instance_profile.ecr_profile.name}"
   user_data = "${file("./user-data.sh")}"

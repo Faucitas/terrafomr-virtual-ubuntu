@@ -1,1 +1,1 @@
-# Django Blog Build
+# AWS EC2 Docker Server
