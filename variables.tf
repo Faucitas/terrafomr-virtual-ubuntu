@@ -1,32 +1,20 @@
-variable "image_id" {
-  type        = string
-  description = "The AWS ami id for the base ec2 os"
-  default = "ami-0c24d345ea91339ee"
-}
-
-variable "instance_type" {
-  type        = string
-  description = "The name of the ec2 instance size"
-  default = "t2.micro"
-}
-
 variable "region" {
   type        = string
   description = "Region to deploy the server in"
-  default = "us-east-1"
-}
-
-variable "key_name" {
-  type        = string
-  description = "Key file to use for ssh"
-  default = "ubuntu-live"
+  default     = "us-east-1"
 }
 
 variable "default_tags" {
-  type = map(string)
+  type        = map(string)
   description = "Default tags for all provisioned infastructure"
   default = {
-    project = "Django Blog"
+    project    = "Django Blog"
     costcenter = "Test Projects"
   }
+}
+
+variable "image_id" {
+  description = "The AWS ami id for the base ec2 os"
+  type        = string
+  default     = "ami-0c24d345ea91339ee"
 }
